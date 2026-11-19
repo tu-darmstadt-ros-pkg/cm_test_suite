@@ -1,0 +1,12 @@
+# The same with chained controllers: two stops in one chain while the loop is held inside a read,
+# then the arm, which a held read may have faulted (rulebook 2.2.6), and the chain are restarted.
+switch strict -wrist hold
+switch strict -arm_ik hold
+switch strict -wrist
+switch strict -arm_ik
+switch strict -arm_vel
+unload wrist expect=accept
+load wrist expect=accept
+configure wrist expect=accept
+recover arm
+switch strict +arm_vel +arm_ik +wrist expect=accept

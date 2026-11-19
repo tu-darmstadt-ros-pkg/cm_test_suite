@@ -1,0 +1,11 @@
+# The power is cut during a switch, comes back before the hardware faulted, and a switch runs
+# while the faults are still arriving.
+switch strict +whole_body powercut@2
+powercut off
+powercut on nowait
+powercut off
+powercut on nowait
+switch strict +monitor
+powercut off
+switch strict +teleop powercut@0
+powercut off

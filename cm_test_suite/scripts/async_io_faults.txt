@@ -1,0 +1,9 @@
+# The owner thread of async hardware jitters, stalls below the 100 ms hang rule and hangs in a write.
+# Jitter and stalls still make progress, so the controller manager must not fault anything. The hang
+# may fault base and stop what uses it, and a recovery brings base back.
+slowio jitter
+switch strict +flipper_vel -flipper_pos
+slowio stall
+fault hardware:base:write:hang
+recover base
+switch auto +base_vel +diff_drive +odom_pub

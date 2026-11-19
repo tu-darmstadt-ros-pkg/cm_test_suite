@@ -1,0 +1,6 @@
+# AUTO rejects what it could only do by stopping something that was not requested.
+switch auto -diff_drive expect=reject
+switch auto -arm_vel expect=reject
+switch strict +nav expect=accept
+switch auto +whole_body expect=reject
+switch force_auto +whole_body expect=accept

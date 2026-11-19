@@ -1,0 +1,19 @@
+# A switch arrives while the controller manager handles a fault whose on_deactivate or on_error is
+# slow or hangs. Every switch answers within its timeout plus 500 ms.
+fault controller:wrist:update:error fault=controller:wrist:deactivate:late fault=controller:arm_vel:deactivate:late fault=controller:arm_ik:deactivate:late nowait
+switch strict +flipper_vel -flipper_pos
+switch auto +wrist +arm_ik +arm_vel -flipper_vel
+fault controller:wrist:update:error fault=controller:wrist:deactivate:hang nowait
+switch strict +flipper_vel -flipper_pos
+fault controller:flipper_vel:update:throw fault=controller:flipper_vel:deactivate:late nowait
+switch strict +arm_pos -arm_vel -arm_ik
+fault hardware:base:write:error fault=hardware:base:error:hang nowait
+switch auto +flipper_pos
+fault hardware:arm:read:error fault=hardware:arm:error:late nowait
+switch auto +diff_drive +base_vel
+fault hardware:flipper:read:deactivate fault=hardware:flipper:deactivate:hang nowait
+switch strict -odom_pub
+recover arm
+recover base
+recover flipper
+switch auto +arm_vel +arm_ik +wrist +base_vel +diff_drive +flipper_pos +odom_pub

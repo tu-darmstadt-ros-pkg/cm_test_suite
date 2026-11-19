@@ -1,0 +1,9 @@
+# A failing component takes down the active unit depending on it, and nothing else.
+switch strict +whole_body expect=accept
+switch strict +teleop expect=accept
+fault hardware:base:write:error
+recover base expect=accept
+switch auto +teleop expect=accept
+fault hardware:imu:read:deactivate
+recover imu expect=accept
+fault hardware:arm:read:throw

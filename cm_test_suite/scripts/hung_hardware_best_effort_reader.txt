@@ -1,0 +1,5 @@
+# A read of base hangs and its on_error is late. The controller manager may give up on base and
+# start the best effort reader jsb without the states of base meanwhile (fuzz seed 725 on arm, all
+# async, shrunk).
+fault hardware:base:read:hang fault=hardware:base:error:late nowait
+switch strict +jsb

@@ -1,0 +1,4 @@
+# diff_drive fails and its on_deactivate is late when the power is cut during a switch. The
+# reaction to the cut is bounded from the return of the late callback (fuzz seed 2138, shrunk).
+fault controller:diff_drive:update:error fault=controller:diff_drive:deactivate:late nowait
+switch force_auto +wrist fault=controller:whole_body:deactivate:delay@3 powercut@1

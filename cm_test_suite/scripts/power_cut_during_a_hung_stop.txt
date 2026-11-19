@@ -1,0 +1,5 @@
+# diff_drive fails and its on_deactivate hangs when the power is cut. No controller manager can cut
+# the hang short, so the reaction to the cut is bounded from the return of the hang (fuzz seed
+# 4952, shrunk).
+fault controller:diff_drive:update:throw fault=controller:diff_drive:deactivate:hang nowait
+powercut on

@@ -1,0 +1,5 @@
+# A mode switch of async hardware takes longer than a control cycle, like Dynamixel. The control
+# loop must keep running, so its prepare and perform must not run on it or make it wait.
+switch strict -odom_pub -diff_drive -base_vel fault=hardware:base:perform:delay@0 expect=accept
+switch strict +base_vel fault=hardware:base:prepare:delay@0 fault=hardware:base:perform:delay@0 expect=accept
+switch strict +diff_drive +odom_pub expect=accept

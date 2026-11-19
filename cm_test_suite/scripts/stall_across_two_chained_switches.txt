@@ -1,0 +1,11 @@
+# The same with chained controllers: two stalled stops in one chain, then the chain is restarted.
+switch strict -wrist stall
+switch strict -arm_ik stall
+switch strict -wrist
+switch strict -arm_ik
+switch strict -arm_vel
+unload wrist expect=accept
+load wrist expect=accept
+configure wrist expect=accept
+recover arm
+switch strict +arm_vel +arm_ik +wrist expect=accept

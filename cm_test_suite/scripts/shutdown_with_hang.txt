@@ -1,0 +1,4 @@
+# Shutdown stops the hardware in bounded time although a controller hangs in on_deactivate.
+switch strict +whole_body expect=accept
+switch strict +teleop expect=accept
+shutdown fault=controller:teleop:deactivate:hang

@@ -1,0 +1,5 @@
+# The owner thread of async hardware hangs in a write while a switch restarts the controller that
+# commands it. The controller manager may fault base and stop what uses it, nothing else, and must
+# never stop everything. The delayed perform of the hold that follows the hang lets the controller
+# manager see the given up validation return before that hold.
+switch force_auto +base_vel -base_vel fault=hardware:base:write:hang@0 fault=hardware:base:perform:delay@0

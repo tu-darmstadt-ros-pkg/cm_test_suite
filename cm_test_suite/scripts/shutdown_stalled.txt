@@ -1,0 +1,2 @@
+# Shutdown returns within its bound and stops everything although the control loop does not cycle.
+shutdown stall

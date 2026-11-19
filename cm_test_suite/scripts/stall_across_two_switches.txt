@@ -1,0 +1,10 @@
+# The control loop is held while two deactivations each run into their deadline. Afterwards both
+# controllers can still be stopped, unloaded and loaded again.
+switch strict -odom_pub stall
+switch strict -jsb stall
+switch strict -odom_pub
+switch strict -jsb
+unload odom_pub expect=accept
+unload jsb expect=accept
+load odom_pub expect=accept
+load jsb expect=accept

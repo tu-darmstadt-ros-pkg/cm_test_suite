@@ -1,0 +1,7 @@
+# A controller whose update fails stops together with its active unit, and may run again after a
+# restart.
+switch strict +whole_body expect=accept
+switch strict +teleop expect=accept
+fault controller:arm_ik:update:error
+switch auto +teleop expect=accept
+fault controller:base_vel:update:throw

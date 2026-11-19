@@ -1,0 +1,7 @@
+# Faults that strike while a switch is in progress.
+switch strict +whole_body +teleop fault=hardware:arm:write:error@2
+recover arm
+switch auto +teleop fault=hardware:base:perform:error@0
+recover base
+switch auto +teleop fault=hardware:flipper:prepare:throw@0
+switch auto +teleop fault=controller:diff_drive:deactivate:error@1

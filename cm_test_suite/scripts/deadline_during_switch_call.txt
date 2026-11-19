@@ -1,0 +1,10 @@
+# A lifecycle callback uses up nearly all of the switch timeout, so the deadline passes while the
+# slow prepare or perform after it runs (below the 100 ms hang rule). The switch answers in time,
+# and no hardware applies a command of a controller that ends up stopped.
+switch strict +flipper_vel -flipper_pos fault=controller:flipper_vel:activate:late@0 fault=hardware:flipper:perform:delay@0
+switch auto +flipper_pos -flipper_vel fault=controller:flipper_vel:deactivate:late@0 fault=hardware:flipper:perform:delay@0
+switch strict +base_vel -base_vel fault=controller:base_vel:activate:late@0 fault=hardware:base:perform:delay@0
+switch auto +base_vel +diff_drive fault=controller:diff_drive:activate:late@0 fault=hardware:base:prepare:delay@0
+switch strict +arm_pos -arm_vel -arm_ik -wrist fault=controller:arm_pos:activate:late@0 fault=hardware:arm:perform:delay@0
+switch auto +wrist +arm_ik +arm_vel -arm_pos fault=controller:arm_pos:deactivate:late@0 fault=hardware:arm:perform:delay@0
+switch auto +flipper_pos +base_vel +diff_drive +arm_vel +arm_ik +wrist expect=accept

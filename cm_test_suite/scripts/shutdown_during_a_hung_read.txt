@@ -1,0 +1,3 @@
+# Shutdown meets async hardware whose read hangs and finishes it once the read returned (fuzz seed
+# 610053).
+fault hardware:base:read:hang nowait

@@ -1,0 +1,7 @@
+# Controllers that write no command in their first updates after an activation. The hardware must
+# never apply a command of an earlier activation meanwhile, also not through a chain.
+switch strict +flipper_pos -flipper_pos fault=controller:flipper_pos:activate:quiet@0 expect=accept
+switch strict -flipper_pos expect=accept
+switch strict +flipper_pos fault=controller:flipper_pos:activate:quiet@0 expect=accept
+switch strict +wrist -wrist fault=controller:wrist:activate:quiet@0 expect=accept
+switch strict +base_vel +diff_drive -base_vel -diff_drive fault=controller:base_vel:activate:quiet@0 expect=accept

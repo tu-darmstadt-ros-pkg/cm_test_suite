@@ -1,0 +1,6 @@
+# A mode switch of sync hardware takes longer than a control cycle, like Dynamixel. Only read and
+# write of sync hardware run on the control loop, so it skips the component while the switch runs.
+switch strict -flipper_pos +flipper_vel fault=hardware:flipper:perform:delay@0 expect=accept
+switch strict -arm_ik -wrist -arm_vel +arm_pos fault=hardware:arm:prepare:delay@0 fault=hardware:arm:perform:delay@0 expect=accept
+switch strict -arm_pos +arm_vel +arm_ik +wrist fault=hardware:arm:perform:delay@0 expect=accept
+switch strict -flipper_vel +flipper_pos expect=accept

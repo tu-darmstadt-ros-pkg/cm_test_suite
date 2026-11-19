@@ -1,0 +1,10 @@
+# A power cut faults arm, base and imu like a hard e-stop. Only their active units stop, flipper
+# keeps running and still switches. Restoring the power runs the spawner's recovery sequence.
+powercut on
+switch strict +flipper_vel -flipper_pos expect=accept
+switch strict +whole_body expect=reject
+switch strict +flipper_pos -flipper_vel expect=accept
+powercut off
+switch strict +whole_body expect=accept
+powercut on
+powercut off

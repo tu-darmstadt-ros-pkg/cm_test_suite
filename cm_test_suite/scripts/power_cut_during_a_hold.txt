@@ -1,0 +1,3 @@
+# The power is cut while the control loop is held inside a read of sync hardware. The cut runs once
+# the hold ended, so the held time does not count against the reaction to it (fuzz seed 530020).
+switch force_auto +diff_drive +whole_body +base_vel hold powercut@1

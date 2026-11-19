@@ -1,0 +1,6 @@
+# FORCE_AUTO stops what conflicts with the request, AUTO adds missing providers.
+switch strict +nav expect=accept
+switch force_auto +teleop expect=accept
+switch force_auto +nav expect=accept
+switch strict -odom_pub -nav -diff_drive -base_vel expect=accept
+switch auto +teleop expect=accept

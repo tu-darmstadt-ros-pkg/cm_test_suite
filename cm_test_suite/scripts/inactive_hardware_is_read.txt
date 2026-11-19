@@ -1,0 +1,6 @@
+# Hardware that a fault deactivated is still read while a controller reads its state, like
+# upstream reads inactive components (jsb best effort on flipper, odom_pub and diff_drive on imu).
+fault hardware:flipper:write:deactivate
+switch strict +monitor
+fault hardware:imu:read:deactivate
+switch strict -monitor

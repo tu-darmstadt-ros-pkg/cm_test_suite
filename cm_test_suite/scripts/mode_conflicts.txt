@@ -1,0 +1,6 @@
+# Hardware accepts one command mode per joint and rejects the rest in prepare.
+switch strict +arm_pos expect=reject
+switch strict -arm_ik -wrist -arm_vel +arm_pos expect=accept
+switch strict +flipper_vel expect=reject
+switch strict -flipper_pos +flipper_vel expect=accept
+switch auto -arm_pos +arm_ik +wrist expect=accept

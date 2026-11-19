@@ -1,0 +1,7 @@
+# The owner thread of async hardware stalls 80 ms in every write, just below the 100 ms hang rule,
+# while controllers on it start and stop. It still makes progress, so the controller manager must not
+# fault it or stop anything.
+slowio long_stall
+switch strict +flipper_vel -flipper_pos
+slowio long_stall
+switch strict +base_vel +diff_drive -base_vel -diff_drive

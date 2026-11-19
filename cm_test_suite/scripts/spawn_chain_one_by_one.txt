@@ -1,0 +1,9 @@
+# The spawner switches one controller per call, bottom up and top down.
+switch strict -odom_pub -diff_drive expect=accept
+switch strict -base_vel expect=accept
+switch strict +base_vel expect=accept
+switch strict +diff_drive expect=accept
+switch strict +whole_body expect=accept
+switch strict +teleop expect=accept
+switch strict -teleop expect=accept
+switch strict -whole_body expect=accept

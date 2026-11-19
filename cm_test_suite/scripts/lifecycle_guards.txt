@@ -1,0 +1,15 @@
+# Lifecycle requests on active controllers are rejected, on inactive ones they work.
+unload arm_vel expect=reject
+cleanup arm_vel expect=reject
+configure arm_vel expect=reject
+unload nav expect=accept
+load nav expect=accept
+load nav expect=reject
+configure nav expect=accept
+switch strict +nav expect=accept
+cleanup nav expect=reject
+switch strict -nav expect=accept
+cleanup nav expect=accept
+unload nav expect=accept
+configure monitor fault=controller:monitor:configure:failure
+cleanup jsb fault=controller:jsb:cleanup:throw

@@ -1,0 +1,4 @@
+# AUTO never starts a provider that the request names to stop, even when it is inactive already.
+switch strict -arm_ik -wrist -arm_vel expect=accept
+switch auto +wrist -arm_vel expect=reject
+switch force_auto +wrist -arm_vel expect=reject

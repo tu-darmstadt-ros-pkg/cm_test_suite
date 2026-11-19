@@ -1,0 +1,12 @@
+<class_libraries>
+  <library path="cm_test_suite_plugins">
+    <class name="cm_test_suite/TraceSystem" type="cm_test_suite::TraceSystem" base_class_type="hardware_interface::SystemInterface">
+      <description>Rig hardware without watchdog that audits every command it applies</description>
+    </class>
+  </library>
+  <library path="cm_test_suite_pre_shutdown_hardware">
+    <class name="cm_test_suite/PreShutdownSensor" type="cm_test_suite::PreShutdownSensor" base_class_type="hardware_interface::SensorInterface">
+      <description>Sensor whose dependency registers a pre-shutdown callback on the default context, as MoveIt does</description>
+    </class>
+  </library>
+</class_libraries>

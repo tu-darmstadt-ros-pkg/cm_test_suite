@@ -1,0 +1,4 @@
+# A read fault asks to deactivate hardware that is already inactive and still read (found by the
+# Team 3 reviewer, repro f7).
+switch force_auto -flipper_vel fault=hardware:flipper:write:deactivate@4
+fault hardware:flipper:read:deactivate

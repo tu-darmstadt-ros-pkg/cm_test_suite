@@ -1,0 +1,5 @@
+# Unload gives up on a hanging on_cleanup. A load of the same name must be rejected while that
+# callback still runs (rulebook 2.2.5).
+switch strict -odom_pub expect=accept
+unload odom_pub fault=controller:odom_pub:cleanup:hang nowait
+load odom_pub

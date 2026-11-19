@@ -1,0 +1,4 @@
+# The control loop stalls during a switch and a lifecycle callback hangs.
+switch strict +whole_body stall
+switch strict +teleop
+switch strict -teleop -whole_body fault=controller:whole_body:deactivate:hang@0

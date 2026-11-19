@@ -1,0 +1,4 @@
+# A controller that refuses to stop counts as stopped, its interfaces are released and held.
+switch strict -wrist fault=controller:wrist:deactivate:failure@0
+switch strict -arm_ik -arm_vel fault=controller:arm_vel:deactivate:failure@0
+switch strict +arm_pos

@@ -1,0 +1,4 @@
+# arm_vel has two writers. When one stops, arm_vel must not keep applying its last reference.
+switch strict -wrist expect=accept
+switch strict +wrist expect=accept
+switch strict -arm_ik expect=accept

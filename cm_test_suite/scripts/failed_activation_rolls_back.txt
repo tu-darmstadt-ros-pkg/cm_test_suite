@@ -1,0 +1,6 @@
+# A failed activation inside a chain leaves the previous state running.
+switch strict +whole_body +teleop fault=controller:teleop:activate:error@0 expect=reject
+switch strict +whole_body +teleop fault=controller:whole_body:activate:throw@0 expect=reject
+switch strict +whole_body fault=controller:arm_ik:chained_mode:failure@0 expect=reject
+switch strict +whole_body fault=controller:flipper_pos:activate:failure@0
+switch strict +whole_body expect=accept

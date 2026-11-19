@@ -1,0 +1,8 @@
+# Async hardware whose read and write take a millisecond each, so an async cycle is slower than the
+# control period, for longer than the 100 ms hang rule. It still makes progress, so the controller
+# manager must not fault it or stop anything.
+slowio
+switch strict +flipper_vel -flipper_pos
+slowio
+switch strict +base_vel +diff_drive -base_vel -diff_drive
+slowio

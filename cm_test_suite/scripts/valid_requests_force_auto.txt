@@ -1,0 +1,2 @@
+# A valid FORCE_AUTO request on the pristine rig is accepted. The fuzzer predicts no answer.
+switch force_auto +nav expect=accept

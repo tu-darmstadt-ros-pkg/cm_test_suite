@@ -1,0 +1,3 @@
+# A valid AUTO request on the pristine rig is accepted. The fuzzer predicts no answer.
+switch auto +teleop expect=accept
+switch strict -teleop -whole_body expect=accept

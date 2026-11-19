@@ -1,0 +1,3 @@
+# Shutdown with a stalled control loop and a controller that hangs in on_deactivate.
+switch strict +whole_body expect=accept
+shutdown fault=controller:arm_ik:deactivate:hang stall

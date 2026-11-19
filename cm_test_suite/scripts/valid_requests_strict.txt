@@ -1,0 +1,4 @@
+# A valid STRICT request on the pristine rig is accepted, so a controller manager that rejects
+# everything fails here. The fuzzer predicts no answer.
+switch strict +nav expect=accept
+switch strict -nav expect=accept

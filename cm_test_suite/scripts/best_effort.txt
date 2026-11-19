@@ -1,0 +1,8 @@
+# jsb claims its state interfaces best effort, so it starts without the flipper and claims it
+# again after a restart once the flipper is back.
+switch strict -jsb expect=accept
+fault hardware:flipper:write:error
+switch strict +jsb expect=accept
+recover flipper expect=accept
+switch strict -jsb expect=accept
+switch strict +jsb expect=accept
