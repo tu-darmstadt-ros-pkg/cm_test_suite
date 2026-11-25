@@ -253,6 +253,9 @@ export ROS_DOMAIN_ID=<free domain> ROS_AUTOMATIC_DISCOVERY_RANGE=LOCALHOST
 ./build/cm_test_suite_legacy/test_legacy_cm --gtest_filter='Legacy*'
 ```
 
+The legacy executable is built with the tests but not run by `colcon test`, since upstream fails
+many of the suite's checks. `-DCM_TEST_SUITE_LEGACY_TESTS=ON` registers it with ctest.
+
 The plugins are found through pluginlib, hence the `source`. The legacy adapter registers twice,
 as `Legacy` and as `LegacyAsap`, which switches with upstream's `activate_asap`. The filter
 `Legacy*` runs both.

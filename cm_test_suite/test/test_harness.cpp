@@ -372,15 +372,18 @@ TEST(BestEffort, a_reader_may_skip_the_states_of_hardware_in_its_fault_handling_
     trace().set_hardware_state(i, Lifecycle::Active);
   }
   trace().set_hardware_faulted(*rig::hardware_index("arm"), true);
-  const auto loans = [](const std::vector<std::string> & names)
+  // Before ros2_control 6.12 a loan only references its interface, so the test owns them
+  std::vector<hardware_interface::StateInterface::ConstSharedPtr> owned;
+  const auto loans = [&](const std::vector<std::string> & names)
   {
     ControllerTracer::StateInterfaces loaned;
     for (const auto & name : names)
     {
       const auto slash = name.find('/');
-      loaned.emplace_back(
+      owned.push_back(
         std::make_shared<const hardware_interface::StateInterface>(
           name.substr(0, slash), name.substr(slash + 1)));
+      loaned.emplace_back(owned.back());
     }
     return loaned;
   };

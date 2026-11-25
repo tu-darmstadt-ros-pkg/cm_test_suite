@@ -5,7 +5,7 @@
   <version>0.1.0</version>
   <description>Common test suite for controller manager implementations: a fixed rig of tracing controllers and hardware, an invariant oracle and a fuzzer.</description>
   <maintainer email="schmidt@sim.tu-darmstadt.de">Aljoscha Schmidt</maintainer>
-  <license>Apache License 2.0</license>
+  <license>Apache-2.0</license>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
 
