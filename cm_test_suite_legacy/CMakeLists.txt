@@ -20,13 +20,12 @@ if(BUILD_TESTING)
   find_package(rclcpp REQUIRED)
 
   # The suite registers its tests at runtime, so the executable has its own main
-  ament_add_gtest_executable(test_legacy_cm test/test_legacy_cm.cpp SKIP_LINKING_MAIN_LIBRARIES)
-  target_link_libraries(test_legacy_cm
-    cm_test_suite::cm_test_suite
-    controller_manager::controller_manager
-    rclcpp::rclcpp
-    ${controller_manager_msgs_TARGETS}
-  )
+  ament_add_gtest_executable(test_legacy_cm test/test_legacy_cm.cpp
+                             SKIP_LINKING_MAIN_LIBRARIES)
+  target_link_libraries(
+    test_legacy_cm cm_test_suite::cm_test_suite
+    controller_manager::controller_manager rclcpp::rclcpp
+    ${controller_manager_msgs_TARGETS})
   if(CM_TEST_SUITE_LEGACY_TESTS)
     ament_add_gtest_test(test_legacy_cm TIMEOUT 1800)
   endif()

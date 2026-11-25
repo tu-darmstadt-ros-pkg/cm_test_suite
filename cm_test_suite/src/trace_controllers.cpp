@@ -246,6 +246,7 @@ private:
 
 }  // namespace cm_test_suite
 
+// cppcheck-suppress unknownMacro
 PLUGINLIB_EXPORT_CLASS(cm_test_suite::TraceController, controller_interface::ControllerInterface)
 PLUGINLIB_EXPORT_CLASS(
   cm_test_suite::TraceChainableController, controller_interface::ChainableControllerInterface)
