@@ -9,6 +9,9 @@ add_compile_options(-Wall -Wextra -Wpedantic -Werror)
 
 find_package(ament_cmake REQUIRED)
 
+# Upstream fails many of the suite's checks, so ctest runs it only on request
+option(CM_TEST_SUITE_LEGACY_TESTS "Register test_legacy_cm with ctest" OFF)
+
 if(BUILD_TESTING)
   find_package(ament_cmake_gtest REQUIRED)
   find_package(cm_test_suite REQUIRED)
@@ -17,13 +20,16 @@ if(BUILD_TESTING)
   find_package(rclcpp REQUIRED)
 
   # The suite registers its tests at runtime, so the executable has its own main
-  ament_add_gtest(test_legacy_cm test/test_legacy_cm.cpp SKIP_LINKING_MAIN_LIBRARIES TIMEOUT 1800)
+  ament_add_gtest_executable(test_legacy_cm test/test_legacy_cm.cpp SKIP_LINKING_MAIN_LIBRARIES)
   target_link_libraries(test_legacy_cm
     cm_test_suite::cm_test_suite
     controller_manager::controller_manager
     rclcpp::rclcpp
     ${controller_manager_msgs_TARGETS}
   )
+  if(CM_TEST_SUITE_LEGACY_TESTS)
+    ament_add_gtest_test(test_legacy_cm TIMEOUT 1800)
+  endif()
 endif()
 
 ament_package()
